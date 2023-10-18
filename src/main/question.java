@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class questions {
+public class question {
 
 	public static void runQuestions() {
 		// TODO Auto-generated method stub
