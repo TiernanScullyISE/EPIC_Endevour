@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class questions {
 
-	public static void main(String[] args) {
+	public static void runQuestions() {
 		// TODO Auto-generated method stub
 		String[] beginnerDM = { //DM = discrete maths
 				"True or False: The empty set is a subset of every set.",
@@ -74,24 +74,24 @@ public class Main {
 ////////////////////////////////////
 		
 		String[] beginnerCSci = { // CSci = computer science
-				"True or False: The AND operation in Boolean logic returns true if both inputs are true.",
+				"True or False: ::= denotes definition",
 				"True or False: Two logic expressions are considered semantically equivalent if they have the same variable names.",
 				"True or False: BNF is used to define the meaning and behavior of programming code."
 				}; 
 		String[] intermediateCSci = {
-				"True or False: In multi-valued logic systems, a ternary logic can have three possible values: true, false, and maybe.",
+				"True or False: BNF stands for Backus-Naur Function",
 				"True or False: Syntax in programming languages specifies the order of execution of statements, while semantics determines the structure of code.",
 				"True or False: Inductive reasoning is a method for proving statements by providing a counterexample to disprove them."
 				};
 		String[] expertCSci = {
-				"True or False: Boolean algebra can be extended to include don't-care values, which represent conditions where the output value is not important.",
+				"True or False: An Ordered Binary Decision Diagram (OBDD) is the same as a Reduced Ordered BDD (ROBDD)",
 				"True or False: Congruence is an equivalence property that allows for the substitution of equivalent expressions in any context.",
 				"True or False: BNF is a notation used to describe the syntax of programming languages, focusing on the structure and grammar of code."
 				};
 		
-		boolean[] beginnerCSciAns = {true,false,false}; // CSciAns = computer science answers
+		boolean[] beginnerCSciAns = {false,false,false}; // CSciAns = computer science answers
 		boolean[] intermediateCSciAns = {true,false,false};
-		boolean[] expertCSciAns = {true,true,true};
+		boolean[] expertCSciAns = {false,true,true};
 		
 		int totalCSciLength = beginnerCSci.length + intermediateCSci.length + expertCSci.length; // get the total length of the new array
 		String[] allCSci = new String[totalCSciLength]; //create new array to have all the CSci questions
@@ -308,5 +308,5 @@ public class Main {
 		System.out.println("Quiz completed in " + minutes + " minutes and " + seconds + " seconds.");
 
 	}
-
+	
 }
