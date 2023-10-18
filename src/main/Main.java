@@ -8,9 +8,21 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] beginnerDM = {"True or False: The empty set is a subset of every set.","True or False: In propositional logic, the conjunction (AND) of two false statements is true.","True or False: A direct proof starts with the assumption of the negation of the statement to be proven."}; // DM = discrete maths
-		String[] intermediateDM = {"True or False: A relation is reflexive if every element in its domain is related to itself.","True or False: Mathematical induction is used to prove statements for all positive integers.","True or False: A bipartite graph can have an odd cycle."};
-		String[] expertDM = {"True or False: The symmetric difference of two sets is always commutative.","True or False: A partial order is always antisymmetric.","True or False: In proof by contradiction, we assume the statement is true and derive a contradiction."};
+		String[] beginnerDM = { //DM = discrete maths
+				"True or False: The empty set is a subset of every set.",
+				"True or False: Discrete Mathematics is the study of mathematical structures that are countable or discrete",
+				"True or False: A direct proof starts with the assumption of the negation of the statement to be proven."
+				}; 
+		String[] intermediateDM = {
+				"True or False: p <-> q means q if and only if p (biconditional statement)",
+				"True or False: Mathematical induction is used to prove statements for all positive integers.",
+				"True or False: p -> q means if p then q (conditional statement)"
+				};
+		String[] expertDM = {
+				"True or False: The symmetric difference of two sets is always commutative.",
+				"True or False: A partial order is always antisymmetric.",
+				"True or False: In proof by contradiction, we assume the statement is true and derive a contradiction."
+				};
 
 		boolean[] beginnerDMAns = {true,true,false}; // beginnerDMAns = beginner Discrete Maths Answers
 		boolean[] intermediateDMAns = {true,true,true};
@@ -61,9 +73,21 @@ public class Main {
 		*/
 ////////////////////////////////////
 		
-		String[] beginnerCSci = {"True or False: The AND operation in Boolean logic returns true if both inputs are true.","True or False: Two logic expressions are considered semantically equivalent if they have the same variable names.","True or False: BNF is used to define the meaning and behavior of programming code."}; // CSci = computer science
-		String[] intermediateCSci = {"True or False: In multi-valued logic systems, a ternary logic can have three possible values: true, false, and maybe.","True or False: Syntax in programming languages specifies the order of execution of statements, while semantics determines the structure of code.","True or False: Inductive reasoning is a method for proving statements by providing a counterexample to disprove them."};
-		String[] expertCSci = {"True or False: Boolean algebra can be extended to include don't-care values, which represent conditions where the output value is not important.","True or False: Congruence is an equivalence property that allows for the substitution of equivalent expressions in any context.","True or False: BNF is a notation used to describe the syntax of programming languages, focusing on the structure and grammar of code."};
+		String[] beginnerCSci = { // CSci = computer science
+				"True or False: The AND operation in Boolean logic returns true if both inputs are true.",
+				"True or False: Two logic expressions are considered semantically equivalent if they have the same variable names.",
+				"True or False: BNF is used to define the meaning and behavior of programming code."
+				}; 
+		String[] intermediateCSci = {
+				"True or False: In multi-valued logic systems, a ternary logic can have three possible values: true, false, and maybe.",
+				"True or False: Syntax in programming languages specifies the order of execution of statements, while semantics determines the structure of code.",
+				"True or False: Inductive reasoning is a method for proving statements by providing a counterexample to disprove them."
+				};
+		String[] expertCSci = {
+				"True or False: Boolean algebra can be extended to include don't-care values, which represent conditions where the output value is not important.",
+				"True or False: Congruence is an equivalence property that allows for the substitution of equivalent expressions in any context.",
+				"True or False: BNF is a notation used to describe the syntax of programming languages, focusing on the structure and grammar of code."
+				};
 		
 		boolean[] beginnerCSciAns = {true,false,false}; // CSciAns = computer science answers
 		boolean[] intermediateCSciAns = {true,false,false};
@@ -114,9 +138,21 @@ public class Main {
 		*/
 /////////////////////////////////////
 		//COrg = computer organisation
-		String[] beginnerCOrg = {"True or False: A byte consists of 8 bits.","True or False: A CPU can directly execute high-level programming languages.","True or False: RAM stands for Random Access Memory, and it is a type of permanent storage."}; // COrg = computer organisation
-		String[] intermediateCOrg = {"True or False: Caching is a technique used to improve memory access times in a computer system.","True or False: Cache memory is slower but larger in size compared to main memory (RAM).","True or False: The ALU (Arithmetic Logic Unit) is responsible for performing mathematical operations in the CPU."};
-		String[] expertCOrg = {"True or False: A superscalar processor can execute multiple instructions simultaneously.","True or False: The concept of \"endianess\" determines how multi-byte data is stored in memory.","True or False: A digital signal processor (DSP) is specifically designed for complex scientific calculations."};
+		String[] beginnerCOrg = {
+				"True or False: A byte consists of 8 bits.",
+				"True or False: A CPU can directly execute high-level programming languages.",
+				"True or False: RAM stands for Random Access Memory, and it is a type of permanent storage."
+				}; 
+		String[] intermediateCOrg = {
+				"True or False: Caching is a technique used to improve memory access times in a computer system.",
+				"True or False: Cache memory is slower but larger in size compared to main memory (RAM).",
+				"True or False: The ALU (Arithmetic Logic Unit) is responsible for performing mathematical operations in the CPU."
+				};
+		String[] expertCOrg = {
+				"True or False: A superscalar processor can execute multiple instructions simultaneously.",
+				"True or False: The concept of \"endianess\" determines how multi-byte data is stored in memory.",
+				"True or False: A digital signal processor (DSP) is specifically designed for complex scientific calculations."
+				};
 		
 		boolean[] beginnerCOrgAns = {true,false,false}; // COrgAns = computer organisation answers
 		boolean[] intermediateCOrgAns = {true,false,true};
@@ -219,6 +255,11 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		
+		System.out.println("Welcome to the quiz. Press Enter to start.");
+        scanner.nextLine();
+
+        long startTime = System.currentTimeMillis(); // gets the time so when quiz over it can take it away from the time it is when they finish to get elapsed time
+		
 		System.out.println("Answer the following 6 questions on Discrete Maths:");
 		for (int i = 0; i < 6; i++) {
 			System.out.println(questionsDM[i]);
@@ -255,9 +296,17 @@ public class Main {
 			}
 		}
 		
+        long endTime = System.currentTimeMillis(); // get time they finish the quiz
+        long elapsedTime = endTime - startTime; // end - start = elapsed
+        long seconds = elapsedTime / 1000; // converts from miliseconds to seconds
+        long minutes = seconds / 60; // converts from seconds to minutes
+        seconds %= 60; // get the modulus to get the amount of left over seconds
+        
 		System.out.println("The quiz is over, you answered "+correct+" questions correctly out of 18");
 		double percent = (correct/18.0)*100;
 		System.out.println("You got "+percent+"%");
+		System.out.println("Quiz completed in " + minutes + " minutes and " + seconds + " seconds.");
+
 	}
 
 }
