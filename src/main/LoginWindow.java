@@ -23,7 +23,7 @@ public class LoginWindow {
         frame.setLocation(600, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // create panel on the fra,e
+        // create panel on the frame
         JPanel panel = new JPanel();
         frame.add(panel);
         panel.setLayout(null);
@@ -91,7 +91,7 @@ public class LoginWindow {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
             boolean loggedIn = false;
-            // write the username and password into the next line of a csv file
+            // read the username and password lines of a csv file
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 2 && parts[0].equals(user) && parts[1].equals(password)) {
