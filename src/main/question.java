@@ -251,7 +251,7 @@ public class question {
 		
 ////////////////////////////////////////////////
 		
-		int correct = 0;
+		int correct = 0, score = 0;
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -267,6 +267,17 @@ public class question {
 			if (answer == answersDM[i]) {
 				correct++;
 				System.out.println("Correct, you have answered "+correct+" questions correctly");
+				for (int j = 0; j < questionsDM.length; j++) {
+				    String question = questionsDM[i];
+				    
+				    if (isInArray(question, expertDM)) {
+				        score += 5;
+				    } else if (isInArray(question, intermediateDM)) {
+				        score += 3;
+				    } else {
+				        score += 1;
+				    }
+				}
 			} else {
 				System.out.println("Incorrect, the answer was: "+answersDM[i]);
 			}
@@ -306,7 +317,19 @@ public class question {
 		double percent = (correct/18.0)*100;
 		System.out.println("You got "+percent+"%");
 		System.out.println("Quiz completed in " + minutes + " minutes and " + seconds + " seconds.");
-
-	}
+		System.out.println("You got a total score of "+score);
 	
+	
+}	
+
+	// method to check if a question is in an array
+	private static boolean isInArray(String question, String[] array) {
+	    for (String item : array) {
+	        if (item.equals(question)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
 }
