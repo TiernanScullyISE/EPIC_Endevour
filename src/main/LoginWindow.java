@@ -2,6 +2,8 @@ package main;
 
 // Import library swing
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -21,10 +23,12 @@ public class LoginWindow {
         frame = new JFrame("User Registration & Login");
         frame.setSize(360, 200);
         frame.setLocation(600, 300);
+        frame.setBackground(Color.CYAN );
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // create panel on the frame
         JPanel panel = new JPanel();
+        panel.setBackground(Color.lightGray);
         frame.add(panel);
         panel.setLayout(null);
 
@@ -59,7 +63,7 @@ public class LoginWindow {
                 loginUser(user, password); // run login user function
             }
         });
-        panel.add(loginButton); // add button
+        panel.add(loginButton); // add button to panel
 
         JButton signUpButton = new JButton("Sign Up"); // sign up button
         signUpButton.setBounds(100, 80, 80, 25);
@@ -71,7 +75,7 @@ public class LoginWindow {
         successLabel.setBounds(10, 110, 300, 25);
         panel.add(successLabel);
         
-        // make verything visible
+        // make everything visible
         frame.setVisible(true);
         
         csvFile = new File("user_data.csv");

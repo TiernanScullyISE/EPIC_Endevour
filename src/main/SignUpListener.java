@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUpListener implements ActionListener {
-    // This method is triggered when the "Sign Up" button is clicked.
+    // this method is triggered when the "Sign Up" button is clicked.
     public void actionPerformed(ActionEvent e) {
         // Create text fields for new user information.
         JTextField newUserTextField = new JTextField();
@@ -18,7 +18,7 @@ public class SignUpListener implements ActionListener {
             "Enter New Password:", newPasswordField
         };
 
-        // Show a dialog to get user input for email and password.
+        // Shows a dialog to get user input for email and password.
         int option = JOptionPane.showConfirmDialog(null, message, "User Registration", JOptionPane.OK_CANCEL_OPTION);
 
         if (option == JOptionPane.OK_OPTION) {
@@ -40,12 +40,12 @@ public class SignUpListener implements ActionListener {
         }
     }
     
-    // Writes persons username and password to a CSV file.
+    // writes persons username and password to a CSV file.
     private void registerUser(String username, String password) {
         try (FileWriter writer = new FileWriter("user_data.csv", true);
              BufferedWriter bw = new BufferedWriter(writer);
              PrintWriter out = new PrintWriter(bw)) {
-            // Append the new user's information to the CSV file.
+            // append the new user's information to the CSV file.
             out.println(username + "," + password);
             JOptionPane.showMessageDialog(null, "User Registered Successfully. Please Login.");
         } catch (IOException ex) {

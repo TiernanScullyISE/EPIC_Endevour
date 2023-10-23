@@ -33,21 +33,24 @@ public class questions {
 		boolean[] allDMAns = new boolean[9]; // create new array to have all the DM answers
 		
 		int index = 0; // index for new list
-
+		int score = 0;
 		// add all the questions to the array with all the DM questions
 		for (String question : beginnerDM) { // loops through all the elements of beginnerDM 
 		    allDM[index] = question; // sets whatever the question at index question in beginnerDM to the index in allDM
-		    index++; // index +=1 so that it sets the next question to the next index
+		    index++;
+		    score+=1;// index +=1 so that it sets the next question to the next index
 		}
 
 		for (String question : intermediateDM) {
 		    allDM[index] = question;
 		    index++;
+		    score+=2;
 		}
 
 		for (String question : expertDM) {
 		    allDM[index] = question;
 		    index++;
+		    score+=3;
 		}
 		
 		index = 0;
@@ -55,16 +58,19 @@ public class questions {
 		for (boolean i : beginnerDMAns) {
 			allDMAns[index] = i;
 			index++;
+			score+=1;
 		}
 		
 		for (boolean i : intermediateDMAns) {
 			allDMAns[index] = i;
 			index++;
+			score+=2;
 		}
 		
 		for (boolean i : expertDMAns) {
 			allDMAns[index] = i;
 			index++;
+			score+=3;
 		}
 		/*
 		for (int i = 0; i < allDM.length; i++) {
@@ -103,16 +109,19 @@ public class questions {
 		for (String question : beginnerCSci) { // loops through all the elements of beginnerCSci 
 		    allCSci[index] = question; // sets whatever the question at index question in beginnerDM to the index in allCSci
 		    index++; // index +=1 so that it sets the next question to the next index
+		    score+=1;
 		}
 
 		for (String question : intermediateCSci) {
 		    allCSci[index] = question;
 		    index++;
+		    score+=2;
 		}
 
 		for (String question : expertCSci) {
 		    allCSci[index] = question;
 		    index++;
+		    score+=3;
 		}
 		
 		index = 0;
@@ -306,6 +315,7 @@ public class questions {
 		double percent = (correct/18.0)*100;
 		System.out.println("You got "+percent+"%");
 		System.out.println("Quiz completed in " + minutes + " minutes and " + seconds + " seconds.");
+		System.out.println("Your score is " + score);
 
 	}
 	
