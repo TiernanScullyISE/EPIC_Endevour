@@ -14,13 +14,17 @@ public class PlayerDataStatistics {
 
         // Create an instance of PlayerDataWriter to write scores to a CSV file
         PlayerDataWriter userDataWriter = new PlayerDataWriter(user);
+        questions questionsInstance = new questions();
 
+        // Call the getScore() method to retrieve the score
+        int score = questionsInstance.getScore();
+        
         // Ask the user to input a score
-        System.out.println("Enter score: ");
-        String scoreInput = scanner.next();
+        //System.out.println("Enter score: ");
+        //String scoreInput = scanner.next();
 
         try {
-            int score = Integer.parseInt(scoreInput);
+            
             int seconds = 5; // Fixed value for seconds
             userDataWriter.writeScore(score, seconds);
 
