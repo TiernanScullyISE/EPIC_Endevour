@@ -33,21 +33,24 @@ public class questions {
 		boolean[] allDMAns = new boolean[9]; // create new array to have all the DM answers
 		
 		int index = 0; // index for new list
-
+		int score = 0;
 		// add all the questions to the array with all the DM questions
 		for (String question : beginnerDM) { // loops through all the elements of beginnerDM 
 		    allDM[index] = question; // sets whatever the question at index question in beginnerDM to the index in allDM
-		    index++; // index +=1 so that it sets the next question to the next index
+		    index++;
+		   // index +=1 so that it sets the next question to the next index
 		}
 
 		for (String question : intermediateDM) {
 		    allDM[index] = question;
 		    index++;
+		    
 		}
 
 		for (String question : expertDM) {
 		    allDM[index] = question;
 		    index++;
+	
 		}
 		
 		index = 0;
@@ -55,16 +58,19 @@ public class questions {
 		for (boolean i : beginnerDMAns) {
 			allDMAns[index] = i;
 			index++;
+
 		}
 		
 		for (boolean i : intermediateDMAns) {
 			allDMAns[index] = i;
 			index++;
+	
 		}
 		
 		for (boolean i : expertDMAns) {
 			allDMAns[index] = i;
 			index++;
+
 		}
 		/*
 		for (int i = 0; i < allDM.length; i++) {
@@ -103,16 +109,19 @@ public class questions {
 		for (String question : beginnerCSci) { // loops through all the elements of beginnerCSci 
 		    allCSci[index] = question; // sets whatever the question at index question in beginnerDM to the index in allCSci
 		    index++; // index +=1 so that it sets the next question to the next index
+	
 		}
 
 		for (String question : intermediateCSci) {
 		    allCSci[index] = question;
 		    index++;
+
 		}
 
 		for (String question : expertCSci) {
 		    allCSci[index] = question;
 		    index++;
+
 		}
 		
 		index = 0;
@@ -333,6 +342,7 @@ public class questions {
         long endTime = System.currentTimeMillis(); // get time they finish the quiz
         long elapsedTime = endTime - startTime; // end - start = elapsed
         long seconds = elapsedTime / 1000; // converts from miliseconds to seconds
+        // System.out.println(seconds);
         long minutes = seconds / 60; // converts from seconds to minutes
         seconds %= 60; // get the modulus to get the amount of left over seconds
         
