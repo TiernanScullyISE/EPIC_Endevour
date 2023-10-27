@@ -1,54 +1,42 @@
 package main;
-import java.io.*;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
-public class PlayerDataStatistics {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Ask the user for a username
-        System.out.println("Enter username: ");
-        String user = scanner.next();
-
-        // Create an instance of PlayerDataWriter to write scores to a CSV file
+public class PlayerDataStatistics  {
+    public static void PlayerData(String user, int score, long second) {
+        // Create an instance of PlayerDataWriter to handle the user's CSV file
         PlayerDataWriter userDataWriter = new PlayerDataWriter(user);
-        questions questionsInstance = new questions();
+        File csvFile = userDataWriter.getCSVFile();
 
-        // Call the getScore() method to retrieve the score
-        int score = questionsInstance.getScore();
-        
-        // Ask the user to input a score
-        //System.out.println("Enter score: ");
-        //String scoreInput = scanner.next();
+        // Calculate and display statistics
+        int[] statistics = calculateStatistics(csvFile);
 
-        try {
-            
-            int seconds = 5; // Fixed value for seconds
-            userDataWriter.writeScore(score, seconds);
-
-            // Retrieve the CSV file associated with the user
-            File csvFile = userDataWriter.getCSVFile();
-
-            // Calculate and print statistics
-            calculateAndPrintStatistics(csvFile);
-        } catch (NumberFormatException e) {
-            System.err.println("Invalid input. Score should be an integer.");
-        }
+        // Print and display statistics using the StatisticsGUI class
+        System.out.println("Mean Score: " + statistics[0]);
+        System.out.println("Standard Deviation of Score: " + statistics[1]);
+        System.out.println("Mean Time in Seconds: " + statistics[2]);
+        StatisticsGUI.ShowStatistics(score, second, statistics[0], statistics[1], statistics[2]);
     }
 
-    private static void calculateAndPrintStatistics(File csvFile) {
+    private static int[] calculateStatistics(File csvFile) {
         List<Integer> scores = new ArrayList<>();
         List<Integer> seconds = new ArrayList<>();
 
+        // Read data from the user's CSV file and populate lists
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 2) {
+                    // Extract score and seconds from the CSV file
                     int score = Integer.parseInt(parts[0]);
                     int second = Integer.parseInt(parts[1]);
+
+                    // Add score and seconds to respective lists
                     scores.add(score);
                     seconds.add(second);
                 }
@@ -59,30 +47,37 @@ public class PlayerDataStatistics {
         }
 
         if (scores.isEmpty()) {
+            // If there are no scores available, return a message
             System.out.println("No scores available to calculate statistics.");
+            return new int[]{0, 0, 0}; // Default values
         } else {
-            double mean = calculateMean(scores);
-            double standardDeviation = calculateStandardDeviation(scores, mean);
+            // Calculate mean score, standard deviation of score, and mean seconds
+            int meanScore = calculateMean(scores);
+            int standardDeviationScore = calculateStandardDeviation(scores, meanScore);
+            int meanSeconds = calculateMean(seconds);
 
-            System.out.println("Mean: " + mean);
-            System.out.println("Standard Deviation: " + standardDeviation);
+            // Return the statistics as an array of integers
+            return new int[]{meanScore, standardDeviationScore, meanSeconds};
         }
     }
 
-    private static double calculateMean(List<Integer> scores) {
+    // Calculate the mean of a list of integers
+    private static int calculateMean(List<Integer> data) {
         int sum = 0;
-        for (int score : scores) {
-            sum += score;
+        for (int value : data) {
+            sum += value;
         }
-        return (double) sum / scores.size();
+        return sum / data.size();
     }
 
-    private static double calculateStandardDeviation(List<Integer> scores, double mean) {
+    // Calculate the standard deviation of a list of integers
+    private static int calculateStandardDeviation(List<Integer> data, int mean) {
         double squaredDifferencesSum = 0.0;
-        for (int score : scores) {
-            squaredDifferencesSum += Math.pow(score - mean, 2);
+        for (int value : data) {
+            squaredDifferencesSum += Math.pow(value - mean, 2);
         }
-        double variance = squaredDifferencesSum / scores.size();
-        return Math.sqrt(variance);
+        double variance = squaredDifferencesSum / data.size();
+        return (int) Math.sqrt(variance);
     }
 }
+

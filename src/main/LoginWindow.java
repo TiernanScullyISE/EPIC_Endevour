@@ -1,85 +1,100 @@
 package main;
-
-// Import library swing
 import javax.swing.*;
-
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// gui components
 public class LoginWindow {
-    private JFrame frame;
-    private JTextField userText;
-    private JPasswordField passwordText;
-    private JLabel successLabel;
-    private File csvFile;
+    private JFrame frame; //Create a window frame 
+    private JTextField userText; //Input field for the username
+    private JPasswordField passwordText; // Input field for the password
+    private JLabel successLabel; 
+    private File csvFile; //File to store user data.
+    private BufferedImage backgroundImage; // image to use as the background.
 
     public void createLoginWindow() {
-    	// create frame components
         frame = new JFrame("User Registration & Login");
-        frame.setSize(360, 200);
-        frame.setLocation(600, 300);
-        frame.setBackground(Color.CYAN );
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        // create panel on the frame
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.lightGray);
-        frame.add(panel);
-        panel.setLayout(null);
+        frame.setSize(500, 300); // Define the window's size 
+        frame.setLocation(600, 300); // Set the window's initial position
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // how to close the application
 
-        // create username label
+        try {
+            // Load the background image from file
+            backgroundImage = ImageIO.read(new File("C:\\Users\\dylan\\MyRepos\\EPIC_Endevour\\Login-Background.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Create a custom panel for drawing the background image
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (backgroundImage != null) {
+                    // Draw the background image to cover the panel
+                    g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+        panel.setOpaque(false); //Make the panel transparent
+        frame.setContentPane(panel); // Set the panel as the content of the window
+
+        panel.setLayout(null); 
+
+        // Create a label for the username input
         JLabel userLabel = new JLabel("Email (Username):");
-        userLabel.setBounds(10, 20, 150, 25);
-        panel.add(userLabel);
-        
-        // username text field
+        userLabel.setBounds(10, 20, 150, 25); // Set its position and size
+        panel.add(userLabel); //add the label to the panel
+
+        // Create a text field for the username input.
         userText = new JTextField(20);
         userText.setBounds(160, 20, 165, 25);
         panel.add(userText);
 
-        // label for password
+        // Create a label for the password input.
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds(10, 50, 150, 25);
+        passwordLabel.setBounds(10, 55, 150, 25);
         panel.add(passwordLabel);
 
-        // text field for password
+        // Create a password input field for secure password entry.
         passwordText = new JPasswordField();
-        passwordText.setBounds(160, 50, 165, 25);
+        passwordText.setBounds(160, 55, 165, 25);
         panel.add(passwordText);
-        
-        // create a button for the login that does action when pressed 
+
+        // Create a button for login.
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(10, 80, 80, 25);
+        loginButton.setBounds(10, 90, 80, 25);
+        //action when the button is pressed.
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	// when login button pressed get user details and store in variables
                 String user = userText.getText();
                 String password = new String(passwordText.getPassword());
-                loginUser(user, password); // run login user function
+                loginUser(user, password);
             }
         });
-        panel.add(loginButton); // add button to panel
+        panel.add(loginButton);
 
-        JButton signUpButton = new JButton("Sign Up"); // sign up button
-        signUpButton.setBounds(100, 80, 80, 25);
+        //button for signing up.
+        JButton signUpButton = new JButton("Sign Up");
+        signUpButton.setBounds(100, 90, 80, 25);
         signUpButton.addActionListener(new SignUpListener());
-        // action listener for sign up button - goes to other class
         panel.add(signUpButton);
 
+        // label for displaying success or failure messages.
         successLabel = new JLabel("");
-        successLabel.setBounds(10, 110, 300, 25);
+        successLabel.setBounds(10, 120, 300, 25);
         panel.add(successLabel);
-        
-        // make everything visible
+
+        // Make the window visible to the user
         frame.setVisible(true);
-        
+
+        // Create a file to store user data (if not already exists).
         csvFile = new File("user_data.csv");
-        // create new csv file called user_data if not created already
         if (!csvFile.exists()) {
             try {
                 csvFile.createNewFile();
@@ -91,32 +106,29 @@ public class LoginWindow {
         }
     }
 
+    // A method for handling user login.
     private void loginUser(String user, String password) {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
             boolean loggedIn = false;
-            // read the username and password lines of a csv file
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 2 && parts[0].equals(user) && parts[1].equals(password)) {
-                	// if usernAme and password match, change success label to say login sucessful
                     successLabel.setText("Login successful");
                     loggedIn = true;
-                    frame.dispose();
-                    JOptionPane.showMessageDialog(null, "Sucesfully logged in, Continue to Console ");
-                    questions.runQuestions();
-                    //closes the window after correct login
-                    // Open the question window or perform any required action
+                    frame.dispose(); //Close the login window on successful login.
+                    JOptionPane.showMessageDialog(null, "Successfully logged in, Continue to Console");
+                    // Perform any required action after successful login.
+                    questions.runQuestions(user);
                 }
             }
 
             if (!loggedIn) {
                 successLabel.setText("Login Failed");
             }
-            //catch any errors that may have occcured
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-}
 
+}
