@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import adding.Leaderboard;
+import adding.LeaderboardGUI;
+import adding.StatisticsGUI;
+
 public class PlayerDataStatistics  {
     public static void PlayerData(String user, int score, long second) {
         // Create an instance of PlayerDataWriter to handle the user's CSV file
@@ -20,6 +24,9 @@ public class PlayerDataStatistics  {
         System.out.println("Standard Deviation of Score: " + statistics[1]);
         System.out.println("Mean Time in Seconds: " + statistics[2]);
         StatisticsGUI.ShowStatistics(score, second, statistics[0], statistics[1], statistics[2]);
+        Leaderboard.WriteToLeaderboard(user, statistics[0], statistics[2]);
+        LeaderboardGUI gui = new LeaderboardGUI();
+        LeaderboardGUI.createLeaderboardWindow() ; 
     }
 
     private static int[] calculateStatistics(File csvFile) {
