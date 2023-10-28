@@ -12,8 +12,8 @@ public class StatisticsGUI {
 
     public static void main(String[] args) {
         // Call the ShowStatistics method to display statistics
-        //ShowStatistics(10, 10, 10, 10, 10);
-        File csvFile; 
+        ShowStatistics(10, 10, 10, 10, 10);
+        File csvFile; // Declare a File object (not used in this context)
     }
 
     public static void ShowStatistics(int CurrentScore, long CurrentTime, int MeanScore, int SDScores, int MeanTime) {
@@ -23,12 +23,12 @@ public class StatisticsGUI {
         // Create a heading for the statistics window
         frame = new JFrame("Show Statistics");
         frame.setSize(500, 500); // Set the window size
-        frame.setLocation(550, 200); //Set the window position
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setLocation(250, 200); // Set the window position
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define how to close the application
 
         try {
-            //Load the background image
-            backgroundImage = ImageIO.read(new File("C:\\Users\\dylan\\MyRepos\\EPIC_Endevour\\your-scores.png"));
+            // Load the background image
+            backgroundImage = ImageIO.read(new File("C:/Users/dylan/eclipse-workspace/Modularlisetest/your-scores.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,9 +44,9 @@ public class StatisticsGUI {
                 }
             }
         };
-        panel.setOpaque(false); // make the panel transparent to reveal the background
+        panel.setOpaque(false); // Make the panel transparent to reveal the background
         frame.setContentPane(panel);
-        panel.setLayout(null); 
+        panel.setLayout(null); // Use absolute positioning for components
 
         // Customize the font
         Font customFont = new Font("Arial", Font.PLAIN, 25);
@@ -70,7 +70,7 @@ public class StatisticsGUI {
 
     private static JLabel createLabel(String text, int x, int y, int width, int height, Font font) {
         JLabel label = new JLabel(text);
-        label.setBounds(x, y, width, height); //Set the position and size of the label
+        label.setBounds(x, y, width, height); // Set the position and size of the label
         label.setFont(font); // Set the font for the label
         return label;
     }
