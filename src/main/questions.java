@@ -80,6 +80,7 @@ public class questions {
                 selectedCategoryQuestions = expertQuestions;
                 selectedCategoryAnswers = expertAnswers;
                 break;
+           
             case 4:
                 // Merge all categories and pick 9 random questions
                 selectedCategoryQuestions = new String[27];
@@ -91,6 +92,7 @@ public class questions {
                     selectedCategoryAnswers[i] = beginnerAnswers[randomIndex];
                 }
                 break;
+
             default:
                 System.out.println("Invalid choice. Exiting.");
                 return;

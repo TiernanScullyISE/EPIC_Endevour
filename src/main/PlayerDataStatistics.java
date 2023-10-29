@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import adding.Leaderboard;
-import adding.LeaderboardGUI;
-import adding.StatisticsGUI;
 
 public class PlayerDataStatistics  {
     public static void PlayerData(String user, int score, long second) {
