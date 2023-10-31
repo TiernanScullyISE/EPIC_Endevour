@@ -26,7 +26,7 @@ public class LoginWindow {
 
         try {
             // Load the background image from file
-            backgroundImage = ImageIO.read(new File("C:\\Users\\dylan\\MyRepos\\EPIC_Endevour\\Login-Background.png"));
+            backgroundImage = ImageIO.read(new File("Login-Background.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

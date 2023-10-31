@@ -23,7 +23,7 @@ public class LeaderboardGUI {
 
         try {
             // Load the background image from a file.\\
-            backgroundImage = ImageIO.read(new File("C:\\Users\\dylan\\MyRepos\\EPIC_Endevour\\ldrboard.png"));
+            backgroundImage = ImageIO.read(new File("ldrboard.png"));
 
             panel = new JPanel() {
                 @Override

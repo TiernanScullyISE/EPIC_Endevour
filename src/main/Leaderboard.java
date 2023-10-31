@@ -62,7 +62,7 @@ public class Leaderboard {
 	}
 
 	public static void main(String[] args) {
-		WriteToLeaderboard("James", 15, 33);
+		//WriteToLeaderboard("James", 15, 33);
 	}
 }
 
