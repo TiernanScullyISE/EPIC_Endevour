@@ -12,7 +12,6 @@ public class questions {
         System.out.println("1 - Beginner");
         System.out.println("2 - Intermediate");
         System.out.println("3 - Advanced");
-        System.out.println("4 - Random");
         System.out.print("Enter your choice: ");
         int quizMode = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character
@@ -81,17 +80,6 @@ public class questions {
                 selectedCategoryAnswers = expertAnswers;
                 break;
            
-            case 4:
-                // Merge all categories and pick 9 random questions
-                selectedCategoryQuestions = new String[27];
-                selectedCategoryAnswers = new boolean[27];
-                int totalQuestions = beginnerQuestions.length + intermediateQuestions.length + expertQuestions.length;
-                for (int i = 0; i < totalQuestions; i++) {
-                    int randomIndex = random.nextInt(totalQuestions);
-                    selectedCategoryQuestions[i] = beginnerQuestions[randomIndex];
-                    selectedCategoryAnswers[i] = beginnerAnswers[randomIndex];
-                }
-                break;
 
             default:
                 System.out.println("Invalid choice. Exiting.");
