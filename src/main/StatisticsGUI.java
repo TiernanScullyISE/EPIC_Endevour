@@ -28,7 +28,7 @@ public class StatisticsGUI {
 
         try {
             // Load the background image
-            backgroundImage = ImageIO.read(new File("C:/Users/dylan/eclipse-workspace/Modularlisetest/your-scores.png"));
+            backgroundImage = ImageIO.read(new File("your-scores.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

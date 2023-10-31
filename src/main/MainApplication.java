@@ -1,8 +1,6 @@
 package main;
 import javax.swing.SwingUtilities;
 
-
-
 public class MainApplication {
 
     public static void main(String[] args) {
@@ -11,7 +9,6 @@ public class MainApplication {
 
     	//QuestionBank bank = new QuestionBank();
 
-    	
 
         SwingUtilities.invokeLater(new Runnable() {
 
