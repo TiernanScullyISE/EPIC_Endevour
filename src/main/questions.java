@@ -58,7 +58,7 @@ public class questions {
             "True or False: BNF is a notation used to describe the syntax of programming languages, focusing on the structure and grammar of code.",
             "True or False: The precision of a 3 digit decimal number from 000 to 999 is 1",
             "True or False: The error of a 3 digit decimal number from 000 to 999 is 0.5.",
-            "True or False: True or False: The radix or base of a number system defines the range of possible values that a digit may have"
+            "True or False: The radix or base of a number system defines the range of possible values that a digit may have"
         };
         boolean[] expertAnswers = { true, true, true, false, true, true, true, true, true };
 

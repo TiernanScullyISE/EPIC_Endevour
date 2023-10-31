@@ -119,7 +119,7 @@ public class LoginWindow {
                     loggedIn = true;
                     frame.dispose(); //Close the login window on successful login.
                     JOptionPane.showMessageDialog(null, "Successfully logged in, Continue to Console");
-                    System.out.println("Enter 1 for beginner, 2 for intermediate, 3 for hard mode, or 4 for random:");
+                    System.out.println("Enter 1 for beginner, 2 for intermediate, 3 for hard mode:");
                     Scanner scanner = new Scanner(System.in);
                     int gamelevel= scanner.nextInt();
                     // Perform any required action after successful login.
