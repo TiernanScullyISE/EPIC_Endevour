@@ -103,16 +103,16 @@ public class LeaderboardGUI {
         List<LeaderboardEntry> entries = new ArrayList<>();
         try {
             File csvFile = new File(filename);
-            if (csvFile.exists()) {
-                BufferedReader reader = new BufferedReader(new FileReader(csvFile));
+            if (csvFile.exists()) { // if a CSV file with their name already exists
+                BufferedReader reader = new BufferedReader(new FileReader(csvFile)); // read the file
                 String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(",");
+                while ((line = reader.readLine()) != null) { // as long as the line it's on is not blank
+                    String[] parts = line.split(","); // vales are seperated by commas
                     if (parts.length == 3) {
                         String user = parts[0];
                         int meanScore = Integer.parseInt(parts[1]);
                         int meanTime = Integer.parseInt(parts[2]);
-                        entries.add(new LeaderboardEntry(user, meanScore, meanTime));
+                        entries.add(new LeaderboardEntry(user, meanScore, meanTime)); // add the stats to the leaderboard
                     }
                 }
                 reader.close();

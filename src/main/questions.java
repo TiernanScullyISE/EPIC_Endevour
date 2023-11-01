@@ -141,7 +141,7 @@ public class questions {
 	}
 
 	private static String[] removeElement(String[] array, int index) { // method to remove an element at a specific index from an array
-		String[] newArray = new String[array.length - 1]; // make new array with a length of 1 less than the orginial
+		String[] newArray = new String[array.length - 1]; // make new array with a length of 1 less than the orginal
 		for (int i = 0, j = 0; i < array.length; i++) { // loops through all elements in array
 			if (i != index) { // if i is not equal to the element we want to remove
 				newArray[j++] = array[i]; // add i to the new array
