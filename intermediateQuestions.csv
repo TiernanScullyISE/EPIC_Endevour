@@ -1,0 +1,9 @@
+p <-> q means,q if and only if p,p implies q,p if and only if q,p and q are independent
+Mathematical induction is used to prove statements for all positive integers,True,False,It only works for even integers,It only works for prime numbers
+p -> q means,if p then q,p and q are mutually exclusive,q implies p,p and q are always true
+BNF stands for,Backus-Naur Form,Binary Notation Format,Boolean Normal Form,Basic Notation Function
+Syntax in programming languages specifies,The order of execution of statements,The structure of code,The meaning of code,The output of code
+Inductive reasoning is,A method for proving statements by providing a counterexample to disprove them,Only effective for mathematical statements,Limited to deductive reasoning,An effective way to prove statements
+Caching is,A technique used to improve memory access times in a computer system,Only effective for secondary storage,Not a relevant technique in computing,Limited to specific applications in computing
+What is slower but larger in size compared to cache memory,Secondary storage,Main memory (RAM),CPU registers,Virtual memory
+The ALU (Arithmetic Logic Unit) is responsible for,Responsible for performing mathematical operations in the CPU,Only responsible for logic operations,Irrelevant to the functioning of the CPU,It is responsible for both arithmetic and logic operations
