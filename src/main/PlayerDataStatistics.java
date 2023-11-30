@@ -1,4 +1,5 @@
 package main;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -6,9 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class PlayerDataStatistics  {
-    public static void PlayerData(String user, int score, long second) {
+public class PlayerDataStatistics { // Class for the statistics
+    public static void PlayerData(String user, int score, long second) { // Method to calculate the statistics
         // Create an instance of PlayerDataWriter to handle the user's CSV file
         PlayerDataWriter userDataWriter = new PlayerDataWriter(user);
         File csvFile = userDataWriter.getCSVFile();
@@ -22,11 +22,10 @@ public class PlayerDataStatistics  {
         System.out.println("Mean Time in Seconds: " + statistics[2]);
         StatisticsGUI.ShowStatistics(score, second, statistics[0], statistics[1], statistics[2]);
         Leaderboard.WriteToLeaderboard(user, statistics[0], statistics[2]);
-        LeaderboardGUI gui = new LeaderboardGUI();
-        LeaderboardGUI.createLeaderboardWindow() ; 
+        LeaderboardGUI.createLeaderboardWindow(); // Create the leaderboard window
     }
 
-    private static int[] calculateStatistics(File csvFile) {
+    private static int[] calculateStatistics(File csvFile) { // Method to calculate the statistics
         List<Integer> scores = new ArrayList<>();
         List<Integer> seconds = new ArrayList<>();
 
@@ -45,15 +44,15 @@ public class PlayerDataStatistics  {
                     seconds.add(second);
                 }
             }
-        } catch (IOException | NumberFormatException ex) {
+        } catch (IOException | NumberFormatException ex) { 
             ex.printStackTrace();
             System.exit(1);
         }
 
-        if (scores.isEmpty()) {
+        if (scores.isEmpty()) { 
             // If there are no scores available, return a message
             System.out.println("No scores available to calculate statistics.");
-            return new int[]{0, 0, 0}; // Default values
+            return new int[] { 0, 0, 0 }; // Default values
         } else {
             // Calculate mean score, standard deviation of score, and mean seconds
             int meanScore = calculateMean(scores);
@@ -61,7 +60,7 @@ public class PlayerDataStatistics  {
             int meanSeconds = calculateMean(seconds);
 
             // Return the statistics as an array of integers
-            return new int[]{meanScore, standardDeviationScore, meanSeconds};
+            return new int[] { meanScore, standardDeviationScore, meanSeconds };
         }
     }
 
@@ -84,4 +83,3 @@ public class PlayerDataStatistics  {
         return (int) Math.sqrt(variance);
     }
 }
-

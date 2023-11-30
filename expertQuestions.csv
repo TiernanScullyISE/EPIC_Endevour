@@ -1,0 +1,9 @@
+The symmetric difference of two sets is always:,Commutative,Non-commutative,Transitive,Associative
+A partial order is always:,Antisymmetric,Reflexive,Transitive,All of the above
+In proof by contradiction we:,Assume the statement is true and derive a contradiction,Confirm the statement,Reject the contradiction,Validate the initial hypothesis
+An Ordered Binary Decision Diagram (OBDD) is,Used for representing Boolean functions,Equivalent to a Reduced Ordered BDD (ROBDD),Limited to specific applications,Symmetrical in its structure
+Congruence is:,An equivalence property allowing substitution of equivalent expressions,Dependent on specific scenarios,Always invariant,Occasionally applicable
+BNF is,A notation describing the syntax of programming languages,Focused on code structure and grammar,Occasionally used in specific instances,Symmetrically applicable
+What precision characterizes a 3-digit decimal number ranging from 000 to 999?,1,0.1,0.01,0.001
+What error is associated with a 3-digit decimal number ranging from 000 to 999?,0.5,0.05,0.005,0.0005
+The radix or base of a number system,Defines the range of possible values for a digit,Determines the precision of the system,Is universally constant,Occasionally varies with context

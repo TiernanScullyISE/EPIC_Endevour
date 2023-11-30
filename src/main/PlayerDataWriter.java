@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class PlayerDataWriter {
+public class PlayerDataWriter { // Class for writing player data to a CSV file
     private File csvFile;
 
     public PlayerDataWriter(String username) {
@@ -35,7 +35,8 @@ public class PlayerDataWriter {
             // Write the score and seconds as a new line in the CSV file.
             out.println(score + "," + seconds);
 
-            // Close the resources in reverse order (PrintWriter, BufferedWriter, FileWriter).
+            // Close the resources in reverse order (PrintWriter, BufferedWriter,
+            // FileWriter).
             out.close();
             bw.close();
             writer.close();

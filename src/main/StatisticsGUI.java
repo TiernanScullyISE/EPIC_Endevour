@@ -10,20 +10,14 @@ import java.io.IOException;
 public class StatisticsGUI {
     private static BufferedImage backgroundImage;
 
-    public static void main(String[] args) {
-        // Call the ShowStatistics method to display statistics
-        ShowStatistics(10, 10, 10, 10, 10);
-        File csvFile; // Declare a File object (not used in this context)
-    }
-
-    public static void ShowStatistics(int CurrentScore, long CurrentTime, int MeanScore, int SDScores, int MeanTime) {
+    public static void ShowStatistics(int CurrentScore, long CurrentTime, int MeanScore, int SDScores, int MeanTime) { // This method creates the statistics window
         JFrame frame;
         JPanel panel;
 
         // Create a heading for the statistics window
         frame = new JFrame("Show Statistics");
         frame.setSize(500, 500); // Set the window size
-        frame.setLocation(250, 200); // Set the window position
+        frame.setLocation(150, 100); // Set the window position
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define how to close the application
 
         try {
@@ -36,16 +30,16 @@ public class StatisticsGUI {
         // Create a custom panel for displaying the background image
         panel = new JPanel() {
             @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                if (backgroundImage != null) {
+            protected void paintComponent(Graphics g) { // Draw the background image to cover the panel
+                super.paintComponent(g); // Make the panel transparent
+                if (backgroundImage != null) { // Draw the background image to cover the panel
                     // Draw the background image to cover the panel
                     g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
                 }
             }
         };
         panel.setOpaque(false); // Make the panel transparent to reveal the background
-        frame.setContentPane(panel);
+        frame.setContentPane(panel); // Set the panel as the content of the window
         panel.setLayout(null); // Use absolute positioning for components
 
         // Customize the font

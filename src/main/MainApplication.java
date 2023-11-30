@@ -1,4 +1,5 @@
 package main;
+
 import javax.swing.SwingUtilities;
 
 public class MainApplication {
@@ -7,8 +8,7 @@ public class MainApplication {
 
         // Start the GUI application
 
-    	//QuestionBank bank = new QuestionBank();
-
+        // QuestionBank bank = new QuestionBank();
 
         SwingUtilities.invokeLater(new Runnable() {
 
